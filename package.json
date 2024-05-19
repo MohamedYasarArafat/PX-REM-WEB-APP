@@ -1,0 +1,65 @@
+{
+  "name": "px-rem",
+  "version": "0.1.0",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "electron-is": "^3.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "PUBLIC_URL=/ react-scripts build",
+    "build-electron": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:start": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "yarn build-electron && electron-builder build --publish never -m"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.24.5",
+    "@types/electron": "^1.6.10",
+    "concurrently": "^8.2.2",
+    "electron": "^30.0.3",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.app.id",
+    "productName": "PX-REM",
+    "files": [
+      "build/**/*",
+      "electron/main.js",
+      "package.json"
+    ],
+    "extends": null,
+    "mac": {
+      "target": "dmg"
+    }
+  }
+}
